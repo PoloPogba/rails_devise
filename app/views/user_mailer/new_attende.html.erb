@@ -1,0 +1,14 @@
+html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Un nouvel inscrit à l'événement <%= @event.title %> !</h1>
+    <p>
+      <%= @user.first_name %> <%= @user.last_name %> vient de s'inscrire ton événement.
+    </p>
+    <p>
+      Retrouve tous les détails de l'événement ici : <%= @url %>.
+    </p>
+  </body>
+</html>
