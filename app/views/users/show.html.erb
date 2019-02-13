@@ -1,0 +1,47 @@
+MON PROFAILE </br>
+<li>
+      <%= link_to "Edit email / password", edit_user_registration_path %>
+    </li>
+Surname :       </br>
+Name :          </br>
+
+<p> Voici votre email : <%= current_user.email %> </p>
+
+
+
+<h1>Mes Evénements</h1>
+        
+        <table>
+            <tr>
+                <td>Numéro</td>
+                <td></td>
+                
+                <td>Title</td>
+                
+                <td></td>
+                
+                <td>Description</td>
+                
+                
+                <td></td>
+            </tr>
+            
+            <% @event.each do |event| %>
+
+            <tr>
+                <td><%= event.id %> </td>
+                <td></td>
+                <td><%= event.title %></td>
+                <td></td>
+                
+                <td><%= event.description %></td>
+                <td></td>
+                
+               <td><%= link_to "Voir plus...", event_path(event.id)%></td>
+                
+            </tr>
+            <%end%>
+            
+        </table>
+    </body>
+    </center>

@@ -1,0 +1,41 @@
+<head>
+        <title>Les tableaux</title>
+        <meta charset= "utf-8">
+    </head>
+    <center>
+    <body>
+        <h1><%=@id_event.title%></h1>
+        
+        <table>
+            <tr>
+                <td>Numéro</td>
+                <td>Date</td>
+                <td>Title</td>
+                <td>Location</td>
+                <td>Duration</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td>Administrator N°</td>
+                <td> Rejoindre l'évènement</td>
+            </tr>
+            
+            
+
+            <tr>
+                <td><%= @id_event.id %> </td>
+                <td><%= @id_event.start_date %> </td>
+                <td><%= @id_event.title %></td>
+                <td><%= @id_event.location %></td>
+                <td><%= @id_event.duration %></td>
+                <td><%= @id_event.description %></td>
+                <td><%= @id_event.price %></td>
+                <td><%= @id_event.admin_id %></td>
+                <td> <a class="btn btn-primary" <%= link_to "Postuler", {:controller => "charges", :action => "new", :event_id => @id_event.id} %> </a></td>
+               
+                <% $event_id = @id_event.id %>
+            </tr>
+            
+            
+        </table>
+    </body>
+    </center>

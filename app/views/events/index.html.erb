@@ -1,0 +1,55 @@
+
+
+    
+    
+    
+    
+
+
+
+
+
+<head>
+
+<p class="btn btn btn-primary"><%= link_to "Create an EVENT", new_event_path %> </p>
+        <title>Les tableaux</title>
+        <meta charset= "utf-8">
+    </head>
+    <center>
+    <body>
+        <h1>Les Evénements</h1>
+        
+        <table>
+            <tr>
+                <td>Numéro</td>
+                <td></td>
+                
+                <td>Title</td>
+                
+                <td></td>
+                
+                <td>Description</td>
+                
+                
+                <td></td>
+            </tr>
+            
+            <% @events.each do |event| %>
+
+            <tr>
+                <td><%= event.id %> </td>
+                <td></td>
+                <td><%= event.title %></td>
+                <td></td>
+                
+                <td><%= event.description %></td>
+                <td></td>
+                
+               <td><%= link_to "Voir plus...", event_path(event.id)%></td>
+                
+            </tr>
+            <%end%>
+            
+        </table>
+    </body>
+    </center>
