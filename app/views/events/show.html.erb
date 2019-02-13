@@ -30,7 +30,13 @@
                 <td><%= @id_event.description %></td>
                 <td><%= @id_event.price %></td>
                 <td><%= @id_event.admin_id %></td>
-                <td> <a class="btn btn-primary" <%= link_to "Postuler", {:controller => "charges", :action => "new", :event_id => @id_event.id} %> </a></td>
+                 
+                
+                
+                
+
+                <td> <a class="btn btn-primary" <%= link_to "Postuler", {:controller => "charges", :action => "new", :event_id => @id_event.id} %> </a></td> 
+                
                
                 <% $event_id = @id_event.id %>
             </tr>

@@ -1,8 +1,9 @@
-<h2>Bravo, vous venez de payez les  <strong><%=$amount%></strong> dollars !</h2>
+<h2>Bravo, vous venez de payez les  <strong><%=$amount%></strong> dollars ! </h2>
 
 Vous allez donc pouvoir participez à l'évènement <%= $id_event.title %> </br>
 
 
-Pour voir les participants à cet évènement,  <%= link_to "Cliquez-ici...", attendances_path%> </br>
+Pour confirmer votre inscription :   <%= link_to "Cliquez-ici...", new_attendance_path%> </br>
 
-Pour revenir à la page des évènements,  <%= link_to "Cliquez-ici...", events_path%>
+
+

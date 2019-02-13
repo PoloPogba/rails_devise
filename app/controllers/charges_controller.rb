@@ -13,13 +13,13 @@ class ChargesController < ApplicationController
       #@id_event = Event.find(params[:event_id])
       #@amount = @id_event.price
     
-      customer = Stripe::Customer.create(
+      $customer = Stripe::Customer.create(
         :email => params[:stripeEmail],
         :source  => params[:stripeToken]
       )
     
       charge = Stripe::Charge.create(
-        :customer    => customer.id,
+        :customer    => $customer.id,
         :amount      => $amount* 100,
         :description => 'Price Event',
         :currency    => 'usd'
