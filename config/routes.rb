@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :charges 
-  resources :events  
+  resources :events do 
+    resources :attendances
+  end  
   
   
   

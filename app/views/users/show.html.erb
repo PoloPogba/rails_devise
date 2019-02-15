@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 MON PROFAILE </br>
 <li>
       <%= link_to "Edit email / password", edit_user_registration_path %>
@@ -45,3 +46,7 @@ Name :          </br>
         </table>
     </body>
     </center>
+    <%else %> 
+    redirect_to user_session_path
+    
+    <%end%>
