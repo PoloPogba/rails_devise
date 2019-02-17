@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!, only: [:users]
+        
     def index 
 
     end
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
         @id_user = User.find(params[:id])
         if user_signed_in?
         @event = Event.where("admin_id = ?", current_user.id)
+        
         end
 end
 

@@ -1,0 +1,13 @@
+Evènement "<%=@id_event.title %>" en date du <%= @id_event.start_date %>
+</br>
+Les participants à cet évènements sont : </br>
+
+<% @id_event.attendances.each do |attendance| %>
+<% user = @users.find(attendance.user_id) %>
+<%=user.last_name%> <%=user.first_name %>
+
+</br>
+<%end%>
+
+<td><a class='btn btn-primary' href='<%= edit_event_path(@id_event) %>'>Edit</a></td>
+<td><p class="btn btn-primary"><%= link_to "DESTROY IT !", event_path(@id_event), method: :DELETE, data: { confirm: 'Are you very sure ?' } %>  </p></td>

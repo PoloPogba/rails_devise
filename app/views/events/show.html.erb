@@ -1,3 +1,5 @@
+
+
 <head>
         <title>Les tableaux</title>
         <meta charset= "utf-8">
@@ -15,7 +17,8 @@
                 <td>Duration</td>
                 <td>Description</td>
                 <td>Price</td>
-                <td>Administrator N°</td>
+                <td>N° Administrator        </td>
+                <td>Participants</td>
                 <td> Rejoindre l'évènement</td>
             </tr>
             
@@ -30,17 +33,50 @@
                 <td><%= @id_event.description %></td>
                 <td><%= @id_event.price %></td>
                 <td><%= @id_event.admin_id %></td>
-                 
+                <td> <%= @id_event.attendances.count %></td>
+</br>
                 
                 
 
-                <td> <a class="btn btn-primary" <%= link_to "Postuler", {:controller => "charges", :action => "new", :event_id => @id_event.id} %> </a></td> 
+              
                 
+                 
                
-                <% $event_id = @id_event.id %>
+                
+
+               <% if @id_event.admin_id == current_user.id  %>
+                
+               <td><a class='btn btn-primary' href='<%= event_attendance_path(@id_event) %>'> Les participations</a> </td>
+                
+               </br>
+               
+               <%elsif @id_event.admin_id != current_user.id && @attendance == nil %>
+               <td><a class='btn btn-primary' href='<%= new_event_attendance_path(@id_event) %>'>Participer</a></td>
+               <% else %> 
+               <td> Vous êtes déja inscrit !</td>
+               
+               <%end%>
             </tr>
             
             
         </table>
     </body>
+                </br>
+                </br>
+                <%if @id_event.avatar.attached?%>
+                <%= image_tag @id_event.thumbnail, alt: 'avatar' %>
+                <%else%>
+                <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+                <%end%>
+                </br>
+                </br>
+
+                <% if @id_event.admin_id == current_user.id  %>
+
+                <%= form_tag event_avatars_path(@id_event), multipart: true do %>
+                <%= file_field_tag :avatar %>
+                 <%= submit_tag "mettre à jour" %>
+                <% end %>
+                <%end%>  
+                
     </center>

@@ -1,5 +1,26 @@
     BRAVO VOUS VENEZ DE VOUS INSCRIRE 
 
-    <%= form_tag("/attendances", method: "create") do %>
-      <%= submit_tag("Confirmation", :class => "btn btn-success") %>
-      <%end%>
+   <strong> <%= current_user.email %> </strong> </br></br>
+
+Vous allez rejoindre l'évènement <%= @id_event.title%>, en date du <%= @id_event.start_date %>, en êtes vous vraiment certain ? </br>
+Si oui, veuillez PAYER le montant ci-dessus ! </br> </br>
+
+
+<%= form_tag event_attendances_path(params[:event_id]) do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: $<%= @id_event.price%> </span>
+    </label>
+  </article>
+</br>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount= <%= @id_event.price * 100 %>
+          data-locale="auto"></script>
+<% end %>

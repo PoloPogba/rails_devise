@@ -1,11 +1,24 @@
 <% if user_signed_in? %>
 MON PROFAILE </br>
+
+
+<%if @id_user.profil.attached?%>
+  <%= image_tag @id_user.image_profil, alt: 'profil' %>
+<%else%>
+  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+<%end%> </br>
+<%= form_tag user_profils_path(@id_user), multipart: true do %>
+
+  <%= file_field_tag :profil %>
+  <%= submit_tag "mettre à jour" %>
+  
+<% end %>
 <li>
       <%= link_to "Edit email / password", edit_user_registration_path %>
     </li>
-Surname :       </br>
-Name :          </br>
-
+Surname : <%= current_user.last_name  %>  </br>
+Name :  <%= current_user.first_name %>        </br>
+Description : <%= current_user.description %>
 <p> Voici votre email : <%= current_user.email %> </p>
 
 

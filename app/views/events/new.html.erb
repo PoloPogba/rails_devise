@@ -1,3 +1,45 @@
+
+
+
+
+
+<div class="row m-3">
+		<div class="col-sm-12 col-md-6 offset-md-3">
+		  <%= form_tag("/events", method: "post", multipart: true) do %>
+		  <%= label_tag(:event_title, "Titre:") %>
+		  <%= text_field_tag(:event_title, "", :class => 'form-control') %>
+		  <br>
+		  <%= label_tag(:event_date, "Date:") %>
+		  <%= date_field_tag(:event_date, Date.today, :class => 'form-control') %>
+		  <br>
+          <%= label_tag(:event_duration, "Duration:") %>
+					<small> (Doit être un multiple de 5)</small>
+		  <%= text_field_tag(:event_duration, "", :class => 'form-control') %>
+			
+		  <br>
+          <%= label_tag(:event_price, "Prix:") %>
+					<small> (Doit être un compris entre 1 et 1000 euros)</small>
+		  <%= text_field_tag(:event_price, "", :class => 'form-control') %>
+		  <br>
+          <%= label_tag(:event_location, "Location:") %>
+		  <%= text_field_tag(:event_location, "", :class => 'form-control') %>
+		  <br>
+          <%= label_tag(:event_description, "Description:") %>
+		  <%= text_area_tag(:event_description, "", :class => 'form-control') %>
+		  <br>
+
+			<div class="form-group">
+     <%= label_tag 'Image' %>
+     <%= file_field_tag :avatar, class: 'form-control' %>
+
+		  <%= submit_tag("Créer l'évenement", :class => "btn btn-success") %>
+		  </div>
+	<% end %>
+    
+</div>
+
+<div class="row m-3">
+
 <div class="row m-3">
 	<% if @event.errors.any? %>
 	<div class="alert alert-danger" role="alert">
@@ -11,35 +53,3 @@
       
 	<% end %>
 </div>
-
-
-
-
-<div class="row m-3">
-		<div class="col-sm-12 col-md-6 offset-md-3">
-		  <%= form_tag("/events", method: "post") do %>
-		  <%= label_tag(:event_title, "Titre:") %>
-		  <%= text_field_tag(:event_title, "", :class => 'form-control') %>
-		  <br>
-		  <%= label_tag(:event_date, "Date:") %>
-		  <%= date_field_tag(:event_date, "", :class => 'form-control') %>
-		  <br>
-          <%= label_tag(:event_duration, "Duration:") %>
-		  <%= text_field_tag(:event_duration, "", :class => 'form-control') %>
-		  <br>
-          <%= label_tag(:event_price, "Prix:") %>
-		  <%= text_field_tag(:event_price, "", :class => 'form-control') %>
-		  <br>
-          <%= label_tag(:event_location, "Location:") %>
-		  <%= text_field_tag(:event_location, "", :class => 'form-control') %>
-		  <br>
-          <%= label_tag(:event_description, "Description:") %>
-		  <%= text_area_tag(:event_description, "", :class => 'form-control') %>
-		  <br>
-		  <%= submit_tag("Créer l'évenement", :class => "btn btn-success") %>
-		  </div>
-	<% end %>
-    
-</div>
-
-<div class="row m-3">
